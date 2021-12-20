@@ -26,15 +26,24 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name') }}">
+                    @error('name')
+                    <p class="text text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Category</label>
-                    <input type="text" name="category" class="form-control" id="exampleInputPassword1" placeholder="Enter Category">
+                    <input type="text" name="category" class="form-control" id="exampleInputPassword1" placeholder="Enter Category" value="{{ old('category') }}">
+                    @error('category')
+                    <p class="text text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                    <input type="text" name="description" class="form-control" id="exampleInputPassword1" placeholder="Enter Description">
+                    <input type="text" name="description" class="form-control" id="exampleInputPassword1" placeholder="Enter Description" value="{{ old('description') }}">
+                    @error('description')
+                    <p class="text text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
                 <a href="{{route('notes.index')}}" type="button" class="btn btn-secondary">Cancel</a>

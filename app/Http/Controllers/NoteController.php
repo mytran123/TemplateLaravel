@@ -28,6 +28,11 @@ class NoteController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate([
+            "name" => "required | max:10 | min:3",
+            "category" => "required",
+            "description" => "required"
+        ]);
         $this->noteRepository->create($request);
         return redirect()->route("notes.index");
     }
