@@ -59,7 +59,15 @@ class NoteController extends Controller
 
     public function destroy($id)
     {
+//        $note = Note::findOrFail($id);
+//        $note->delete();
         DB::table('notes')->where('id',$id)->delete();
         return redirect()->route("notes.index");
+    }
+
+    public function search(Request $request)
+    {
+        $notes = $this->noteRepository->search($request);
+        return view("backend.note.list", compact("notes"));
     }
 }

@@ -16,4 +16,13 @@ class NoteRepository extends BaseRepository
             'description' => $data->description
         ]);
     }
+
+    public function search($request)
+    {
+        if ($request->searchNote !== null) {
+            return DB::table($this->table)->where("category","like","%".$request->searchNote."%")->get();
+        } else {
+            return DB::table($this->table)->get();
+        }
+    }
 }
